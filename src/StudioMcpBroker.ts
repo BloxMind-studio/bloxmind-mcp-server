@@ -16,7 +16,7 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import { Context, Data, Effect, Layer } from "effect";
 
-import { studioMcpCommand } from "../opencodeConfig";
+import { studioMcpCommand } from "./opencodeConfig";
 
 const LOOPBACK = "127.0.0.1";
 

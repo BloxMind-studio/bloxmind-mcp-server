@@ -2,8 +2,8 @@
  * BloxMind MCP Server — Luau script bridges and Model Context Protocol logic.
  *
  * NOTE: The service files in this directory were extracted from the monorepo
- * `electron/services/`. Relative imports were flattened for staging; adjust the
- * import specifiers to this repo's layout before building.
+ * `electron/services/` and re-wired (renamed and relative imports fixed). The
+ * repo type-checks standalone (`pnpm typecheck`).
  */
 
 export const MCP_SERVER_VERSION = "0.9.96";
