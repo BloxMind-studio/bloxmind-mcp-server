@@ -59,7 +59,7 @@ export function createOpenCodeConfig(broker: { url: string; token: string }) {
           "ANIMATION: for combat, eating, dance, emote, or reaction requests load the roblox-animation and roblox-animation-runtime skills before authoring.\n\n" +
           "MAPS: for map, world, level, arena, or obby requests load the roblox-map-planning and roblox-map-building skills, and present the structured plan before building.\n\n" +
           "SLOW TOOLS: generate_mesh runs for minutes; on timeout inspect the workspace and console before retrying, never insert duplicates.\n\n" +
-          "ROJO LIVE-SYNC: Files under src/, server/, or client/ auto-sync live to Roblox Studio via `rojo serve` (default port 34872). Preserve default.project.json's structural layout and Roblox pathing (ServerScriptService, ReplicatedStorage, StarterPlayerScripts). After a restore_checkpoint, wait for Rojo to pick up the reverted files before reporting live-sync.\n\n" +
+          "STANDALONE: BloxMind is a pure standalone workspace — it works directly against Roblox Studio through the Studio MCP bridge. There is no Rojo, no default.project.json, and no local filesystem-to-Studio syncing; never look for, assume, or reference them, and inspect and write only through the Studio MCP tools.\n\n" +
           "GIT: check `git status`/`git diff` before editing. Commit, push, pull, and other filesystem-changing commands require explicit approval — never run them without it.",
       },
     },
