@@ -1,7 +1,7 @@
 import { execFile } from "node:child_process";
 
 /**
- * Startup sweep for stale `rojo.exe` / `opencode.exe` processes left behind
+ * Startup sweep for stale `opencode.exe` processes left behind
  * by a crashed, force-killed, or dev-restarted session.
  *
  * Targeting (Windows): candidates are discovered by process NAME via
@@ -9,7 +9,7 @@ import { execFile } from "node:child_process";
  * `Get-CimInstance Win32_Process` (through powershell.exe) and each
  * candidate is only killed when its parent process no longer exists — i.e.
  * it was orphaned by a dead previous BloxMind session. Candidates whose
- * parent is still alive (e.g. a rojo/opencode binary the user started
+ * parent is still alive (e.g. an opencode binary the user started
  * manually) are skipped and reported via `skippedLiveParent`.
  *
  * Strictly best-effort: if parent discovery fails (PowerShell error, empty
@@ -22,7 +22,7 @@ import { execFile } from "node:child_process";
  */
 
 /** Process image names swept on Windows. */
-export const STALE_PROCESS_IMAGES = ["rojo.exe", "opencode.exe"] as const;
+export const STALE_PROCESS_IMAGES = ["opencode.exe"] as const;
 
 /** Hard timeout for every spawned command so a hung tool can't stall startup. */
 const EXEC_TIMEOUT_MS = 5_000;
@@ -66,12 +66,12 @@ const defaultRunner: SweepRunner = (file, args) =>
  * Windows argument quoting passes it through intact.
  */
 const PARENT_QUERY_COMMAND =
-  "Get-CimInstance Win32_Process -Filter 'Name=''rojo.exe'' OR Name=''opencode.exe''' | " +
+  "Get-CimInstance Win32_Process -Filter 'Name=''opencode.exe''' | " +
   "ForEach-Object { $_.ProcessId.ToString() + ',' + $_.ParentProcessId.ToString() }";
 
 /**
  * Parse PIDs out of `tasklist /FO CSV /NH` output, e.g.
- * `"rojo.exe","12345","Console","1","1,234 K"`. Non-process lines (such as
+ * `"opencode.exe","12345","Console","1","1,234 K"`. Non-process lines (such as
  * tasklist's `INFO: No tasks are running...` message) yield no PIDs.
  */
 export function parseTasklistPids(output: string): number[] {
